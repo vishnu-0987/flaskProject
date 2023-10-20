@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>profile checker</title>
+    <link rel="stylesheet" href="../static/web.css">
 </head>
 <body>
-    <h1>Username Checker</h1>
+    <h1 class="heading">Username Checker</h1>
     <form method="post">
         <label for="username">Enter a username:</label>
         <input type="text" id="username" name="username">
@@ -20,7 +21,13 @@
             {% endfor %}
         </ul>
     </div>
+
+{% else %}
+<h1 class="heading">Please enter a valid username</h1>
 {% endif %}
+
+
+
 
 </body>
 </html>

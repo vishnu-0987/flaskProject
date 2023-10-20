@@ -3,10 +3,12 @@ from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
+
 def FindPresence(username):
     # Define the websites to check
     headers = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36'
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
+                      'Chrome/58.0.3029.110 Safari/537.36'
     }
 
     websites = {
@@ -29,15 +31,20 @@ def FindPresence(username):
 
     return results
 
+
 @app.route('/', methods=['GET', 'POST'])
 def index():
     results = None
 
     if request.method == 'POST':
         username = request.form['username']
-        results = FindPresence(username)
+        if username == "":
+            results = None
+        else:
+            results = FindPresence(username)
 
     return render_template('index.html', results=results)
+
 
 if __name__ == '__main__':
     app.run(debug=True)
