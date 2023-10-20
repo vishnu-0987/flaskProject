@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>profile checker</title>
+</head>
+<body>
+    <h1>Username Checker</h1>
+    <form method="post">
+        <label for="username">Enter a username:</label>
+        <input type="text" id="username" name="username">
+        <input type="submit" value="Check">
+    </form>
+{% if results %}
+    <h2>Results:</h2>
+    <div class="result-container">
+        <ul>
+            {% for website_name, status in results.items() %}
+            <li>{{ website_name }} : {{ status }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endif %}
+
+</body>
+</html>
